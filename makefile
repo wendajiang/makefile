@@ -1,22 +1,20 @@
 #############################################################################
 ## Customizable Section: adapt those variables to suit your program.
 ##==========================================================================
-CONFIGURE = Release
 # The pre-processor options used by the cpp (man cpp for more).
-CPPFLAGS  = -g -fPIC -D__STDC_CONSTANT_MACROS -Wall -std=c++11 -mcx16 \
-			-I/usr/local/protobuf3.3/include 
+CPPFLAGS  = -g -fPIC -D__STDC_CONSTANT_MACROS -Wall -std=c++11 -mcx16 
 			
 # The options used in linking as well as in any direct use of ld.
 LDFLAGS   = -Wl,-z,defs,-Bsymbolic
-LD_FLAGS= -Wl,-stack_size,0x10000000
-SPE_LIBS = -L /usr/local/protobuf3.3/lib/ -lpthread -lrt -luuid -lstdc++ -lprotobuf 
+LD_FLAGS = -Wl,-stack_size,0x10000000
+SPE_LIBS =  -lpthread -lrt -luuid -lstdc++ -lprotobuf 
+INCLUDE = 
 			 
 # The directories in which source files reside.
 SRCDIRS   = ./ 
 
 # The target file name.
-#OUTPUT   = ../lib/linux/live/$(CONFIGURE)/LIVES.so
-OUTPUT   = ./bin/$(CONFIGURE)/pb_demo
+OUTPUT   = ./bin
 
 ## Implicit Section: change the following only when necessary.
 ##==========================================================================
@@ -54,6 +52,9 @@ TAR    = tar -zcf
 
 # The command used to create archives
 AR     = ar rcs
+
+# $(INCLUDE) actually included in $(CPPFLAGS)
+CPPFLAGS += $(INCLUDE)
 
 ## Stable Section: usually no need to be changed. But you can add more.
 ##==========================================================================
