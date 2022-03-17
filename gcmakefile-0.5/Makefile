@@ -124,14 +124,14 @@ SHELL   = /bin/sh
 EMPTY   =
 SPACE   = $(EMPTY) $(EMPTY)
 ifeq ($(PROGRAM),)
-  CUR_PATH_NAMES = $(subst /,$(SPACE),$(subst $(SPACE),_,$(CURDIR)))
-  PROGRAM = $(word $(words $(CUR_PATH_NAMES)),$(CUR_PATH_NAMES))
-  ifeq ($(PROGRAM),)
+	CUR_PATH_NAMES = $(subst /,$(SPACE),$(subst $(SPACE),_,$(CURDIR)))
+	PROGRAM = $(word $(words $(CUR_PATH_NAMES)),$(CUR_PATH_NAMES))
+ifeq ($(PROGRAM),)
     PROGRAM = a.out
-  endif
+endif
 endif
 ifeq ($(SRCDIRS),)
-  SRCDIRS = .
+	SRCDIRS = .
 endif
 SOURCES = $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)/*,$(SRCEXTS))))
 HEADERS = $(foreach d,$(SRCDIRS),$(wildcard $(addprefix $(d)/*,$(HDREXTS))))
@@ -240,7 +240,7 @@ endif
 
 ifndef NODEP
 ifneq ($(DEPS),)
-  sinclude $(DEPS)
+	sinclude $(DEPS)
 endif
 endif
 
